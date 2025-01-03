@@ -11,7 +11,7 @@ func main(){
 	api := fiber.New()
 
 	database.Connect()
-	database.DB.AutoMigrate(&models.Medicos{}, &models.Pacientes{}, &models.Especialidades{})
+	database.DB.AutoMigrate(&models.Medicos{}, &models.Pacientes{}, &models.Especialidades{}, &models.Citas{})
 
 	routes.PacientesRoutes(api)
 

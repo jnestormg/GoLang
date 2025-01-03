@@ -10,4 +10,5 @@ type Pacientes struct{
 	Genero string
 	Telefono string
 	Domicilio Domicilio `gorm:"embedded"`
+	Citas []Citas
 }

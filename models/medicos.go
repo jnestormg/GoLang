@@ -11,4 +11,5 @@ type Medicos struct {
 	Cedula string
 	Domicilio Domicilio `gorm:"embedded"`
 	Especialidades Especialidades 
+	Citas []Citas
 }
