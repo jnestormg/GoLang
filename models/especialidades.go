@@ -4,7 +4,7 @@ import "gorm.io/gorm"
 
 type Especialidades struct {
 	gorm.Model
-	Nombre string
-	Descripcion string
-	UserID uint
+	Nombre string `json:"nombre"`
+	Descripcion string `json:"descripcion"`	
+	UserID uint `json:"user_id"`
 }
