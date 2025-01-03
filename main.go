@@ -7,11 +7,15 @@ import (
 	"github.com/jnestormg/GoLang.git/routes"
 )
 
-func main(){
+func main() {
 	api := fiber.New()
 
 	database.Connect()
-	database.DB.AutoMigrate(&models.Medicos{}, &models.Pacientes{}, &models.Especialidades{}, &models.Citas{})
+	database.DB.AutoMigrate(
+		&models.Medicos{},
+		&models.Pacientes{},
+		&models.Especialidades{},
+		&models.Citas{})
 
 	routes.PacientesRoutes(api)
 
