@@ -22,7 +22,15 @@ func main() {
         log.Fatal("Failed to migrate database:", err)
     }
 
+    api.Get("/", func(c *fiber.Ctx) error {
+        return c.JSON(fiber.Map{
+            "message": "Hello World",
+        })
+    })
+
     routes.PacientesRoutes(api)
+    routes.MedicosRoutes(api)
+    routes.EspecialidadesRoutes(api)
 
     api.Listen(":3000")
 }

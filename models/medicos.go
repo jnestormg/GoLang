@@ -4,7 +4,6 @@ import "gorm.io/gorm"
 
 type Medicos struct {
 	gorm.Model
-	ID uint `gorm:"primaryKey" json:"id"`
 	Nombre string `json:"nombre"`
 	Apellido string `json:"apellido"`
 	Telefono string `json:"telefono"`
