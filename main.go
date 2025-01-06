@@ -25,6 +25,7 @@ func main() {
     routes.PacientesRoutes(api)
     routes.MedicosRoutes(api)
     routes.EspecialidadesRoutes(api)
+    routes.CitasRoutes(api)
 
     api.Listen(":3000")
 }
