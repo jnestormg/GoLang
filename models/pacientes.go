@@ -10,5 +10,5 @@ type Pacientes struct{
 	Genero string `json:"genero"`
 	Telefono string `json:"telefono"`
 	Domicilio Domicilio `gorm:"embedded" json:"domicilio"`
-	Citas []Citas `json:"citas"`
+	Citas []Citas `gorm:"foreignKey:paciente_id" json:"citas"`
 }

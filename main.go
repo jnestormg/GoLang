@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"github.com/gofiber/fiber/v2"
 	"github.com/jnestormg/GoLang.git/database"
 	"github.com/jnestormg/GoLang.git/models"
@@ -8,16 +9,20 @@ import (
 )
 
 func main() {
-	api := fiber.New()
+    api := fiber.New()
 
-	database.Connect()
-	database.DB.AutoMigrate(
-		&models.Medicos{},
-		&models.Pacientes{},
-		&models.Especialidades{},
-		&models.Citas{})
+    database.Connect()
+    err := database.DB.AutoMigrate(
+        &models.Medicos{},
+        &models.Pacientes{},
+        &models.Especialidades{},
+        &models.Citas{},
+    )
+    if err != nil {
+        log.Fatal("Failed to migrate database:", err)
+    }
 
-	routes.PacientesRoutes(api)
+    routes.PacientesRoutes(api)
 
-	api.Listen(":3000")
+    api.Listen(":3000")
 }

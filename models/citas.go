@@ -17,6 +17,6 @@ type Citas struct {
 	Fecha time.Time `gorm:"type:date" json:"fecha"`
 	Motivo string `json:"motivo"`
 	Estado Estado `json:"estado"`
-	MedicoID uint `gorm:"column:medico_id" json:"medico_id"`	
-	PacienteID uint `gorm:"column:paciente_id" json:"paciente_id"`
+	PacienteID uint `json:"paciente_id"`
+	MedicoID uint `json:"medico_id"`
 }
