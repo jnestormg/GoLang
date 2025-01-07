@@ -8,7 +8,7 @@ import (
 
 func GetMedicos(c *fiber.Ctx) error {
 	var medicos []models.Medicos
-	database.DB.Find(&medicos)
+	database.DB.Preload("Especialidades").Find(&medicos)
 	return c.JSON(medicos)
 }
 
@@ -20,7 +20,7 @@ func GetMedicoById(c *fiber.Ctx) error {
 		})
 	}
 	var medico models.Medicos
-	buscar := database.DB.First(&medico, id)
+	buscar := database.DB.Preload("Especialidades").First(&medico, id)
 	if buscar.Error != nil {
 		return c.Status(404).JSON(fiber.Map{
 			"message": "Medico no encontrado",

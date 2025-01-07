@@ -2,7 +2,9 @@ package main
 
 import (
 	"log"
+
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/jnestormg/GoLang.git/database"
 	"github.com/jnestormg/GoLang.git/models"
 	"github.com/jnestormg/GoLang.git/routes"
@@ -10,6 +12,12 @@ import (
 
 func main() {
     api := fiber.New()
+
+    api.Use(cors.New(cors.Config{
+        AllowOrigins: "*",
+        AllowHeaders: "Origin, Content-Type, Accept",
+        AllowMethods: "GET, POST, DELETE, PUT, OPTIONS",
+    }))
 
     database.Connect()
     err := database.DB.AutoMigrate(

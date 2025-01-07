@@ -1,6 +1,8 @@
 package controllers
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/jnestormg/GoLang.git/database"
 	"github.com/jnestormg/GoLang.git/models"
@@ -36,6 +38,7 @@ func CreateCita(c *fiber.Ctx) error {
 			"message": "Error al parsear el body",
 		})
 	}
+	fmt.Println("cita",cita)
 	guardar := database.DB.Create(&cita)
 	if  guardar.Error != nil {
 		return c.Status(500).JSON(fiber.Map{
