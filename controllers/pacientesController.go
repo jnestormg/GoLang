@@ -6,9 +6,10 @@ import (
 	"github.com/jnestormg/GoLang.git/models"
 )
 
+
 func GetPacientes(c *fiber.Ctx) error {
 	var pacientes []models.Pacientes
-	database.DB.Find(&pacientes)
+	database.DB.Preload("Citas").Find(&pacientes)
 	return c.JSON(pacientes)
 }
 
@@ -20,12 +21,12 @@ func GetPAcienteById(c *fiber.Ctx) error {
 		})
 	}
 	var paciente models.Pacientes
-	buscar := database.DB.First(&paciente, id)
+	buscar := database.DB.Preload("Citas").First(&paciente, id)
 	if buscar.Error != nil {
 		return c.Status(404).JSON(fiber.Map{
 			"message": "Paciente no encontrado",
 		})
-		
+
 	}
 	return c.JSON(paciente)
 }
@@ -39,12 +40,12 @@ func CreatePaciente(c *fiber.Ctx) error {
 			"message": "Error al parsear el body",
 		})
 	}
-	 guardar := database.DB.Create(&paciente)
-	 if guardar.Error != nil {
+	guardar := database.DB.Create(&paciente)
+	if guardar.Error != nil {
 		return c.Status(500).JSON(fiber.Map{
 			"message": "No se pudo crear el paciente",
 		})
-	 }
+	}
 	return c.JSON(paciente)
 }
 

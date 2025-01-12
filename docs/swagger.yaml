@@ -1,0 +1,11 @@
+basePath: /
+host: localhost:3000
+info:
+  contact:
+    email: fiber@swagger.io
+    name: API Support
+  description: API para gestionar citas médicas.
+  title: API de citas médicas
+  version: "1.0"
+paths: {}
+swagger: "2.0"

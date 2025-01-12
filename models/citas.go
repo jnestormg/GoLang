@@ -9,8 +9,9 @@ import (
 type Estado string
 
 const (
-	Activo Estado = "Activo"
-	Inactivo Estado = "Inactivo"
+	Pendiente Estado = "pendiente"
+	Realizada Estado = "realizada"
+	Cancelada Estado = "cancelada"
 )
 type Citas struct {
 	gorm.Model
